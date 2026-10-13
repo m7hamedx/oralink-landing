@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="meta.title">OraLink — منصة طب الأسنان الرقمية | أكاديمي وعيادات</title>
+  <meta name="description" data-i18n-content="meta.description"
+        content="بوابة OraLink تربط المرضى والطلاب والأطباء والمشرفين الأكاديميين والعيادات الخارجية عبر تجربة رقمية أذكى وأسرع.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" data-i18n-content="meta.title" content="OraLink — منصة طب الأسنان الرقمية">
+  <meta property="og:description" data-i18n-content="meta.description"
+        content="بوابة OraLink تربط المرضى والطلاب والأطباء والمشرفين الأكاديميين والعيادات الخارجية عبر تجربة رقمية أذكى وأسرع.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1588776814546-daab30f310ce?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:locale" data-i18n-content="meta.locale" content="ar_AR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0B2545">
+  <link rel="icon" type="image/png" href="images/logo-mark.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { 900: "#0B2545", 800: "#0E2C50", 700: "#13315C", 600: "#1B4476" },
+            medical: { 400: "#3BA0FF", 500: "#2E90FA", 600: "#1570CD" },
+            ice: "#F5F9FF"
+          },
+          fontFamily: {
+            sans: ["Inter", "system-ui", "sans-serif"],
+            ar: ["Cairo", "system-ui", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add("js");</script>
+
+  <!-- Application config + engine -->
+  <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
+</head>
+
+<body class="bg-white text-navy-900 antialiased">
+
+  <!-- ===================== SVG ICON SPRITE ===================== -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
+    <defs>
+      <!-- tooth (filled) -->
+      <symbol id="i-tooth" viewBox="0 0 32 36" fill="currentColor">
+        <path d="M16 3C12.5 3 11 4.5 8.5 4.5 5.5 4.5 3 6.5 2.5 10.5 2 14.5 3.5 19 5 23c1 3 2 6.5 3.3 8.5 1 1.5 2.7 1.8 3.7.3 1-1.5 1.6-4.3 2.3-7.3.5-2.1 1-3.5 1.7-3.5s1.2 1.4 1.7 3.5c.7 3 1.3 5.8 2.3 7.3 1 1.5 2.7 1.2 3.7-.3C25.3 29.5 26.3 26 27.3 23c1.5-4 3-8.5 2.5-12.5C29.3 6.5 26.8 4.5 23.8 4.5 21.3 4.5 19.8 3 16 3Z"/>
+      </symbol>
+      <!-- stroke base for line icons -->
+      <symbol id="i-base" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+      <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 12h15"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/>
+      </symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m6 9 6 6 6-6"/>
+      </symbol>
+      <symbol id="i-chevron-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 6 6 6-6 6"/>
+      </symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m5 13 4.5 4.5L19 7"/>
+      </symbol>
+      <symbol id="i-check-c" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-5.2"/>
+      </symbol>
+      <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 20v-1.8a4 4 0 0 0-4-4H6.5a4 4 0 0 0-4 4V20"/><circle cx="9.25" cy="7.5" r="3.6"/><path d="M17.5 4.2a3.6 3.6 0 0 1 0 6.9"/><path d="M21.5 20v-1.8a4 4 0 0 0-3-3.8"/>
+      </symbol>
+      <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 20v-1.8a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4V20"/><circle cx="12" cy="8" r="3.8"/>
+      </symbol>
+      <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 4 2.5 9 12 14l9.5-5L12 4Z"/><path d="M6.5 11.4V16c0 1.6 2.5 2.9 5.5 2.9s5.5-1.3 5.5-2.9v-4.6"/><path d="M21.5 9v5"/>
+      </symbol>
+      <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 21h18"/><path d="M5 21V5.2A1.2 1.2 0 0 1 6.2 4h7.6A1.2 1.2 0 0 1 15 5.2V21"/><path d="M15 10h3.8A1.2 1.2 0 0 1 20 11.2V21"/><path d="M8.5 8h3M8.5 12h3M8.5 16h3"/>
+      </symbol>
+      <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m11 3 1.7 4.3L17 9l-4.3 1.7L11 15l-1.7-4.3L5 9l4.3-1.7L11 3Z"/><path d="m18.5 14 .9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9.9-2.1Z"/>
+      </symbol>
+      <symbol id="i-scan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 8V6a2 2 0 0 1 2-2h2"/><path d="M17 4h2a2 2 0 0 1 2 2v2"/><path d="M21 16v2a2 2 0 0 1-2 2h-2"/><path d="M7 20H5a2 2 0 0 1-2-2v-2"/><path d="M3.5 12h17"/>
+      </symbol>
+      <symbol id="i-folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h3.2l2 2.4h7.8A2.5 2.5 0 0 1 21 9.9v7.6a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5v-10Z"/>
+      </symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3.5" y="5" width="17" height="16" rx="2.2"/><path d="M3.5 10h17"/><path d="M8 3.2v3.6M16 3.2v3.6"/>
+      </symbol>
+      <symbol id="i-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 14.8a1.8 1.8 0 0 1-1.8 1.8H8l-4.2 3.6V5.2A1.8 1.8 0 0 1 5.6 3.4h13.6A1.8 1.8 0 0 1 21 5.2v9.6Z"/>
+      </symbol>
+      <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 6.5C10.8 5.2 9 4.4 6.5 4.4H3v13.4h3.5c2.5 0 4.3.8 5.5 2.1 1.2-1.3 3-2.1 5.5-2.1H21V4.4h-3.5c-2.5 0-4.3.8-5.5 2.1Z"/><path d="M12 6.5v13.4"/>
+      </symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 20.5V4.5"/><path d="M4 20.5H21"/><path d="M8 17v-4.5M13 17V8M18 17v-7.5"/>
+      </symbol>
+      <symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="8.5" y="3.5" width="7" height="4" rx="1"/><path d="M15.5 5.5H17A1.8 1.8 0 0 1 18.8 7.3V19A1.8 1.8 0 0 1 17 20.8H7A1.8 1.8 0 0 1 5.2 19V7.3A1.8 1.8 0 0 1 7 5.5h1.5"/><path d="M8.8 12h6.4M8.8 16h4.6"/>
+      </symbol>
+      <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M13.8 3H7.2A2.2 2.2 0 0 0 5 5.2v13.6A2.2 2.2 0 0 0 7.2 21h9.6a2.2 2.2 0 0 0 2.2-2.2V8.4l-5.2-5.4Z"/><path d="M13.6 3.2v5.2h5.2"/><path d="M8.8 13.5h6.4M8.8 17h6.4"/>
+      </symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8.6a6 6 0 1 0-12 0c0 6.4-2.6 8.4-2.6 8.4h17.2S18 15 18 8.6Z"/><path d="M13.7 20.4a2 2 0 0 1-3.4 0"/>
+      </symbol>
+      <symbol id="i-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3v2.6"/><rect x="3" y="6.6" width="18" height="12" rx="2.8"/><path d="M9 11.5h.01M15 11.5h.01"/><path d="M9.2 15h5.6"/>
+      </symbol>
+      <symbol id="i-help" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/><path d="M9.4 9.3a2.7 2.7 0 0 1 5.3.7c0 1.8-2.7 2.4-2.7 2.4"/><path d="M12 16.8h.01"/>
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/>
+      </symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5.001ZM3 9.2h4v11.8H3V9.2Zm6.5 0h3.8v1.6h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.03-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4V9.2Z"/>
+      </symbol>
+      <symbol id="i-x" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.5 3h3.1l-6.8 7.8L22 21h-6.3l-4.9-6.4L5.1 21H2l7.3-8.3L2 3h6.4l4.4 5.9L17.5 3Zm-1.1 16.1h1.7L7.7 4.8H5.9l10.5 14.3Z"/>
+      </symbol>
+      <symbol id="i-youtube" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M23 12s0-3.5-.45-5.17a2.9 2.9 0 0 0-2.05-2.06C18.83 4.3 12 4.3 12 4.3s-6.83 0-8.5.47A2.9 2.9 0 0 0 1.45 6.83C1 8.5 1 12 1 12s0 3.5.45 5.17a2.9 2.9 0 0 0 2.05 2.06c1.67.47 8.5.47 8.5.47s6.83 0 8.5-.47a2.9 2.9 0 0 0 2.05-2.06C23 15.5 23 12 23 12Zm-13.2 3.4V8.6l5.7 3.4-5.7 3.4Z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ===================== SKIP LINK ===================== -->
+  <a href="#home" class="skip-link" data-i18n="nav.skip">تخطَّ إلى المحتوى</a>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header id="siteHeader" class="fixed inset-x-0 top-0 z-50">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:h-20 lg:px-8">
+      <!-- Logo -->
+      <a href="#home" class="flex items-center rounded-xl" aria-label="OraLink" data-i18n-aria="nav.logo">
+        <img src="images/logo-light.png" alt="" width="1558" height="282" class="h-8 w-auto lg:h-9" fetchpriority="high" />
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-1" aria-label="أقسام الصفحة" data-i18n-aria="nav.sections">
+        <a href="#home" data-nav="home" class="nav-link" data-i18n="nav.home">الرئيسية</a>
+        <a href="#about" data-nav="about" class="nav-link" data-i18n="nav.about">عن المنصة</a>
+        <a href="#features" data-nav="features" class="nav-link" data-i18n="nav.features">المزايا</a>
+
+        <div class="relative">
+          <button type="button" id="forYouBtn" class="nav-link nav-drop inline-flex items-center gap-1.5"
+                  data-nav="for-you clinics" aria-expanded="false" aria-controls="forYouMenu" aria-haspopup="true">
+            <span data-i18n="nav.forYou">لك</span>
+            <svg class="chevron-rot h-3.5 w-3.5" aria-hidden="true"><use href="#i-chevron"/></svg>
+          </button>
+          <div id="forYouMenu" class="absolute top-full z-20 mt-2 w-64 rounded-2xl border border-white/10 bg-navy-900/95 p-2 shadow-2xl backdrop-blur-xl">
+            <a href="#for-you" data-nav="for-you" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-white">
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-medical-500/15 text-medical-400"><svg class="h-4 w-4"><use href="#i-cap"/></svg></span>
+              <span data-i18n="nav.academicItem">للطلاب والأكاديميين</span>
+            </a>
+            <a href="#clinics" data-nav="clinics" class="mt-1 flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-white">
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-medical-500/15 text-medical-400"><svg class="h-4 w-4"><use href="#i-building"/></svg></span>
+              <span data-i18n="nav.clinicsItem">للعيادات الخارجية</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="#contact" data-nav="contact" class="nav-link" data-i18n="nav.contact">تواصل معنا</a>
+      </nav>
+
+      <!-- Right cluster -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div class="flex items-center gap-0.5 rounded-full bg-white/10 p-1 ring-1 ring-white/15"
+             role="group" aria-label="تبديل اللغة" data-i18n-aria="nav.langSwitch">
+          <button type="button" class="lang-btn is-active" data-lang="ar" aria-pressed="true">AR</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+
+        <a href="#about" class="btn btn-primary btn-sm arrow-slide hidden sm:inline-flex">
+          <span data-i18n="nav.getStarted">ابدأ الآن</span>
+          <svg class="arr h-4 w-4" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+
+        <button type="button" id="menuBtn"
+                class="grid h-10 w-10 place-items-center rounded-xl text-white ring-1 ring-white/20 transition hover:bg-white/10 lg:hidden"
+                aria-expanded="false" aria-controls="mobileMenu"
+                aria-label="فتح القائمة" data-i18n-aria="nav.openMenu">
+          <svg class="h-5 w-5" aria-hidden="true"><use href="#i-menu"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden border-t border-white/10 bg-navy-900/95 backdrop-blur-xl lg:hidden">
+      <nav class="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4 sm:px-6" aria-label="القائمة الرئيسية" data-i18n-aria="nav.main">
+        <a href="#home" data-nav="home" class="mobile-link" data-i18n="nav.home">الرئيسية</a>
+        <a href="#about" data-nav="about" class="mobile-link" data-i18n="nav.about">عن المنصة</a>
+        <a href="#features" data-nav="features" class="mobile-link" data-i18n="nav.features">المزايا</a>
+        <a href="#for-you" data-nav="for-you" class="mobile-link" data-i18n="nav.academicItem">للطلاب والأكاديميين</a>
+        <a href="#clinics" data-nav="clinics" class="mobile-link" data-i18n="nav.clinicsItem">للعيادات الخارجية</a>
+        <a href="#contact" data-nav="contact" class="mobile-link" data-i18n="nav.contact">تواصل معنا</a>
+        <a href="#about" class="btn btn-primary arrow-slide mt-3 w-full">
+          <span data-i18n="nav.getStarted">ابدأ الآن</span>
+          <svg class="arr h-4 w-4" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section id="home" class="on-dark relative scroll-mt-20 overflow-hidden bg-navy-900 pt-24 pb-14 sm:pt-28 lg:pt-32 lg:pb-20">
+      <!-- Background image -->
+      <div class="hero-img-wrap absolute inset-0 img-frame">
+        <img data-img="hero" data-i18n-alt="hero.bgAlt"
+             alt="طبيبان أسنان ينفذان إجراءً سريريًا في عيادة حديثة"
+             fetchpriority="high" class="h-full w-full object-cover object-center">
+      </div>
+
+      <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
+          <!-- Copy -->
+          <div class="lg:col-span-7">
+            <p class="eyebrow" data-i18n="hero.eyebrow">طب أسنان رقمي. أثر حقيقي.</p>
+
+            <h1 class="h-display mt-5 text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl">
+              <span class="block" data-i18n="hero.title1">من التعلّم</span>
+              <span class="block" data-i18n="hero.title2">إلى رعاية المرضى.</span>
+              <span class="block bg-gradient-to-r from-medical-400 to-[#8CCBFF] bg-clip-text text-transparent" data-i18n="hero.title3">منصّة واحدة.</span>
+            </h1>
+
+            <p class="mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg" data-i18n="hero.sub">
+              تربط OraLink بين المرضى والطلاب والأطباء والمشرفين الأكاديميين عبر تجربة رقمية أذكى وأسرع.
+            </p>
+
+            <div class="mt-9 flex flex-wrap items-center gap-4">
+              <a data-route="heroPrimary" class="btn btn-primary arrow-slide">
+                <span data-i18n="hero.ctaPrimary">الذهاب إلى البوابة الأكاديمية</span>
+                <svg class="arr h-4 w-4" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+              <a data-route="heroSecondary" class="btn btn-outline arrow-slide">
+                <span data-i18n="hero.ctaSecondary">الذهاب إلى بوابة العيادات</span>
+                <svg class="arr h-4 w-4" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+
+            <!-- Feature chips -->
+            <ul class="mt-10 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              <li class="glass flex items-center gap-3 rounded-2xl px-4 py-3">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-medical-500/15 text-medical-400"><svg class="h-5 w-5"><use href="#i-sparkles"/></svg></span>
+                <span class="text-[13px] font-semibold leading-tight text-white/85" data-i18n="hero.chip1">مساعد بالذكاء الاصطناعي</span>
+              </li>
+              <li class="glass flex items-center gap-3 rounded-2xl px-4 py-3">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-medical-500/15 text-medical-400"><svg class="h-5 w-5"><use href="#i-scan"/></svg></span>
+                <span class="text-[13px] font-semibold leading-tight text-white/85" data-i18n="hero.chip2">أشعة رقمية وتقارير</span>
+              </li>
+              <li class="glass flex items-center gap-3 rounded-2xl px-4 py-3">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-medical-500/15 text-medical-400"><svg class="h-5 w-5"><use href="#i-users"/></svg></span>
+                <span class="text-[13px] font-semibold leading-tight text-white/85" data-i18n="hero.chip3">سجلات مرضى متكاملة</span>
+              </li>
+              <li class="glass flex items-center gap-3 rounded-2xl px-4 py-3">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-medical-500/15 text-medical-400"><svg class="h-5 w-5"><use href="#i-clipboard"/></svg></span>
+                <span class="text-[13px] font-semibold leading-tight text-white/85" data-i18n="hero.chip4">إدارة أكاديمية وسريرية</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Decorative AI assistant card (mockup — not functional) -->
+          <div class="hidden lg:col-span-5 lg:flex lg:justify-end">
+            <div class="glass-strong relative w-full max-w-sm rounded-3xl p-5 shadow-2xl" aria-hidden="true">
+              <div class="flex items-center justify-between">
+                <span class="flex items-center gap-2.5">
+                  <span class="grid h-9 w-9 place-items-center rounded-xl bg-medical-500/15 text-medical-400"><svg class="h-5 w-5"><use href="#i-bot"/></svg></span>
+                  <span class="text-sm font-bold text-white" data-i18n="hero.ai.title">مساعد OraLink</span>
+                </span>
+                <span class="rounded-full bg-medical-500/20 px-2.5 py-1 text-[11px] font-bold text-[#9FD1FF]" data-i18n="hero.ai.beta">تجريبي</span>
+              </div>
+
+              <p class="mt-4 rounded-2xl bg-white/10 p-3.5 text-[13px] leading-relaxed text-white/85" data-i18n="hero.ai.message">
+                مرحبًا! أنا مساعد OraLink. كيف يمكنني مساعدتك اليوم؟
+              </p>
+
+              <ul class="mt-4 space-y-2">
+                <li class="flex items-center justify-between gap-3 rounded-2xl bg-white/[0.07] px-3.5 py-3 ring-1 ring-white/10">
+                  <span class="flex items-center gap-3 text-[13px] font-semibold text-white/90">
+                    <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-medical-500/15 text-medical-400"><svg class="h-4 w-4"><use href="#i-calendar"/></svg></span>
+                    <span data-i18n="hero.ai.row1">حجز موعد</span>
+                  </span>
+                  <svg class="arr h-4 w-4 text-white/50"><use href="#i-chevron-r"/></svg>
+                </li>
+                <li class="flex items-center justify-between gap-3 rounded-2xl bg-white/[0.07] px-3.5 py-3 ring-1 ring-white/10">
+                  <span class="flex items-center gap-3 text-[13px] font-semibold text-white/90">
+                    <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-medical-500/15 text-medical-400"><svg class="h-4 w-4"><use href="#i-clock"/></svg></span>
+                    <span data-i18n="hero.ai.row2">التحقق من المواعيد المتاحة</span>
+                  </span>
+                  <svg class="arr h-4 w-4 text-white/50"><use href="#i-chevron-r"/></svg>
+                </li>
+                <li class="flex items-center justify-between gap-3 rounded-2xl bg-white/[0.07] px-3.5 py-3 ring-1 ring-white/10">
+                  <span class="flex items-center gap-3 text-[13px] font-semibold text-white/90">
+                    <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-medical-500/15 text-medical-400"><svg class="h-4 w-4"><use href="#i-scan"/></svg></span>
+                    <span data-i18n="hero.ai.row3">الحصول على نتائج الأشعة</span>
+                  </span>
+                  <svg class="arr h-4 w-4 text-white/50"><use href="#i-chevron-r"/></svg>
+                </li>
+                <li class="flex items-center justify-between gap-3 rounded-2xl bg-white/[0.07] px-3.5 py-3 ring-1 ring-white/10">
+                  <span class="flex items-center gap-3 text-[13px] font-semibold text-white/90">
+                    <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-medical-500/15 text-medical-400"><svg class="h-4 w-4"><use href="#i-message"/></svg></span>
+                    <span data-i18n="hero.ai.row4">أسئلة عامة عن الأسنان</span>
+                  </span>
+                  <svg class="arr h-4 w-4 text-white/50"><use href="#i-chevron-r"/></svg>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CHOOSE YOUR PATH ===================== -->
+    <section id="about" class="scroll-mt-20 bg-ice py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-12 lg:gap-12">
+          <!-- Intro -->
+          <div class="lg:col-span-4" data-reveal>
+            <p class="eyebrow" style="color:#1570CD" data-i18n="path.eyebrow">اختر مسارك</p>
+            <h2 class="h-display mt-4 text-3xl font-extrabold text-navy-900 sm:text-4xl">
+              <span class="block" data-i18n="path.title1">احتياجات مختلفة.</span>
+              <span class="block" data-i18n="path.title2">منصّة واحدة.</span>
+            </h2>
+            <p class="mt-5 text-[15px] leading-relaxed text-slate-600" data-i18n="path.desc">
+              أنت مريضًا أو طالبًا أو جزءًا من فريقنا الأكاديمي أو السريري — تمنحك OraLink الأدوات المناسبة في مكان واحد.
+            </p>
+            <a href="#for-you" class="btn btn-dark arrow-slide mt-8">
+              <span data-i18n="path.explore">استكشف جميع الخدمات</span>
+              <svg class="arr h-4 w-4" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+
+            <!-- Helper -->
+            <div class="mt-8 flex gap-4 rounded-3xl border border-slate-200 bg-white p-5 shadow-[0_10px_30px_-20px_rgba(11,37,69,.4)]">
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#E7F2FF] text-medical-600"><svg class="h-5 w-5"><use href="#i-help"/></svg></span>
+              <div>
+                <h3 class="text-sm font-extrabold text-navy-900" data-i18n="path.helperTitle">أي مسار يناسبني؟</h3>
+                <p class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600" data-i18n="path.helperLine1">البوابة الأكاديمية مخصّصة للطلاب والأطباء والمشرفين ورؤساء الأقسام والإداريين.</p>
+                <p class="mt-1 text-[13.5px] leading-relaxed text-slate-600" data-i18n="path.helperLine2">بوابة العيادات مخصّصة لأطباء العيادات الخارجية.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cards -->
+          <div class="lg:col-span-8">
+            <ul class="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+              <!-- Patients -->
+              <li data-reveal>
+                <a data-route="patients" class="path-card arrow-slide group flex h-full flex-col overflow-hidden rounded-[26px] bg-navy-900 shadow-[0_24px_50px_-28px_rgba(11,37,69,.7)] ring-1 ring-navy-900/5">
+                  <div class="relative h-44 overflow-hidden img-frame">
+                    <img data-img="pathPatients" data-i18n-alt="path.patients.alt"
+                         alt="مريضة مبتسمة أثناء الفحص على كرسي طبيب الأسنان"
+                         loading="lazy" class="h-full w-full object-cover object-center">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-transparent"></div>
+                    <span class="absolute bottom-4 start-5 grid h-12 w-12 place-items-center rounded-2xl bg-white text-navy-900 shadow-lg"><svg class="h-6 w-6"><use href="#i-user"/></svg></span>
+                    <span data-soon hidden class="absolute end-3 top-3 rounded-full bg-medical-400 px-3 py-1 text-[11px] font-extrabold text-navy-900" data-i18n="path.soon">قريبًا</span>
+                  </div>
+                  <div class="flex flex-1 flex-col p-5">
+                    <h3 class="text-lg font-extrabold text-white" data-i18n="path.patients.title">المرضى</h3>
+                    <ul class="mt-3 space-y-2.5 text-[13.5px] text-white/70">
+                      <li class="flex items-center gap-2.5"><svg class="h-4 w-4 shrink-0 text-medical-400"><use href="#i-check-c"/></svg><span data-i18n="path.patients.b1">حجز المواعيد</span></li>
+                      <li class="flex items-center gap-2.5"><svg class="h-4 w-4 shrink-0 text-medical-400"><use href="#i-check-c"/></svg><span data-i18n="path.patients.b2">عرض خطة العلاج</span></li>
+                      <li class="flex items-center gap-2.5"><svg class="h-4 w-4 shrink-0 text-medical-400"><use href="#i-check-c"/></svg><span data-i18n="path.patients.b3">متابعة مواعيدك</span></li>
+                    </ul>
+                    <div class="mt-5 flex justify-end pt-1">
+                      <span class="arrow-circle"><svg class="arr h-5 w-5" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+
+              <!-- Students & Academic -->
+              <li data-reveal style="--reveal-delay:120ms">
+                <a data-route="students" class="path-card arrow-slide group flex h-full flex-col overflow-hidden rounded-[26px] bg-navy-900 shadow-[0_24px_50px_-28px_rgba(11,37,69,.7)] ring-1 ring-navy-900/5">
+                  <div class="relative h-44 overflow-hidden img-frame">
+                    <img data-img="pathStudents" data-i18n-alt="path.students.alt"
+                         alt="طلاب طب يراجعون الحالات معًا حول طاولة"
+                         loading="lazy" class="h-full w-full object-cover object-center">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-transparent"></div>
+                    <span class="absolute bottom-4 start-5 grid h-12 w-12 place-items-center rounded-2xl bg-white text-navy-900 shadow-lg"><svg class="h-6 w-6"><use href="#i-cap"/></svg></span>
+                  </div>
+                  <div class="flex flex-1 flex-col p-5">
+                    <h3 class="text-lg font-extrabold text-white" data-i18n="path.students.title">الطلاب والأكاديميون</h3>
+                    <ul class="mt-3 space-y-2.5 text-[13.5px] text-white/70">
+                      <li class="flex items-center gap-2.5"><svg class="h-4 w-4 shrink-0 text-medical-400"><use href="#i-check-c"/></svg><span data-i18n="path.students.b1">إدارة الحالات</span></li>
+                      <li class="flex items-center gap-2.5"><svg class="h-4 w-4 shrink-0 text-medical-400"><use href="#i-check-c"/></svg><span data-i18n="path.students.b2">رفع سجلات العلاج</span></li>
+                      <li class="flex items-center gap-2.5"><svg class="h-4 w-4 shrink-0 text-medical-400"><use href="#i-check-c"/></svg><span data-i18n="path.students.b3">متابعة الأداء والتقييم</span></li>
+                    </ul>
+                    <div class="mt-5 flex justify-end pt-1">
+                      <span class="arrow-circle"><svg class="arr h-5 w-5" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+
+              <!-- External Clinics -->
+              <li data-reveal style="--reveal-delay:240ms" class="sm:col-span-2 xl:col-span-1">
+                <a data-route="externalClinics" class="path-card arrow-slide group flex h-full flex-col overflow-hidden rounded-[26px] bg-navy-900 shadow-[0_24px_50px_-28px_rgba(11,37,69,.7)] ring-1 ring-navy-900/5">
+                  <div class="relative h-44 overflow-hidden img-frame">
+                    <img data-img="pathClinics" data-i18n-alt="path.clinics.alt"
+                         alt="غرفة عيادة أسنان حديثة ومجهزة"
+                         loading="lazy" class="h-full w-full object-cover object-center">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-transparent"></div>
+                    <span class="absolute bottom-4 start-5 grid h-12 w-12 place-items-center rounded-2xl bg-white text-navy-900 shadow-lg"><svg class="h-6 w-6"><use href="#i-building"/></svg></span>
+                  </div>
+                  <div class="flex flex-1 flex-col p-5">
+                    <h3 class="text-lg font-extrabold text-white" data-i18n="path.clinics.title">العيادات الخارجية</h3>
+                    <ul class="mt-3 space-y-2.5 text-[13.5px] text-white/70">
+                      <li class="flex items-center gap-2.5"><svg class="h-4 w-4 shrink-0 text-medical-400"><use href="#i-check-c"/></svg><span data-i18n="path.clinics.b1">مواعيد العيادة</span></li>
+                      <li class="flex items-center gap-2.5"><svg class="h-4 w-4 shrink-0 text-medical-400"><use href="#i-check-c"/></svg><span data-i18n="path.clinics.b2">إدارة المرضى</span></li>
+                      <li class="flex items-center gap-2.5"><svg class="h-4 w-4 shrink-0 text-medical-400"><use href="#i-check-c"/></svg><span data-i18n="path.clinics.b3">سير العمل السريري</span></li>
+                    </ul>
+                    <div class="mt-5 flex justify-end pt-1">
+                      <span class="arrow-circle"><svg class="arr h-5 w-5" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOR ACADEMIC & STUDENTS ===================== -->
+    <section id="for-you" class="on-dark relative scroll-mt-20 overflow-hidden bg-navy-900 py-20 text-white lg:py-28">
+      <div class="glow-blob -top-28 start-1/3 h-72 w-72 bg-medical-500/20" aria-hidden="true"></div>
+
+      <!-- Side image (desktop only) -->
+      <div class="img-frame pointer-events-none absolute inset-y-0 end-0 hidden w-[28%] xl:block">
+        <img data-img="academic" data-i18n-alt="academic.imageAlt"
+             alt="طلاب طب أسنان يتدرّبون على إجراء على مجسّم تدريبي"
+             loading="lazy" class="h-full w-full object-cover object-center">
+        <div class="fade-image absolute inset-0"></div>
+      </div>
+
+      <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:pe-[32%]">
+        <div class="grid gap-10 xl:grid-cols-12 xl:gap-8">
+          <div class="xl:col-span-5" data-reveal>
+            <p class="eyebrow" data-i18n="academic.eyebrow">للطلاب والأكاديميين</p>
+            <h2 class="h-display mt-4 text-3xl font-extrabold sm:text-4xl" data-i18n="academic.title">رحلتك الأكاديمية، رقميًا.</h2>
+            <p class="mt-5 text-[15px] leading-relaxed text-white/70" data-i18n="academic.desc">
+              كل ما تحتاجه من موادك وحالاتك ومواعيدك وملاحظات المشرف — في مكان واحد.
+            </p>
+            <a data-route="academicCta" class="btn btn-primary arrow-slide mt-8">
+              <span data-i18n="academic.cta">الذهاب إلى البوابة الأكاديمية</span>
+              <svg class="arr h-4 w-4" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+
+          <div class="xl:col-span-7">
+            <ul class="grid gap-4 sm:grid-cols-2">
+              <li class="glass-tile rounded-3xl p-5" data-reveal>
+                <span class="mb-3 grid h-11 w-11 place-items-center rounded-2xl bg-medical-500/15 text-medical-400 ring-1 ring-white/10"><svg class="h-5 w-5"><use href="#i-folder"/></svg></span>
+                <h3 class="font-bold text-white" data-i18n="academic.t1.title">إدارة الحالات</h3>
+                <p class="mt-1 text-[13px] text-white/65" data-i18n="academic.t1.desc">تتبّع الحالات وتسليمها</p>
+              </li>
+              <li class="glass-tile rounded-3xl p-5" data-reveal style="--reveal-delay:80ms">
+                <span class="mb-3 grid h-11 w-11 place-items-center rounded-2xl bg-medical-500/15 text-medical-400 ring-1 ring-white/10"><svg class="h-5 w-5"><use href="#i-calendar"/></svg></span>
+                <h3 class="font-bold text-white" data-i18n="academic.t2.title">الجداول والتقويمات</h3>
+                <p class="mt-1 text-[13px] text-white/65" data-i18n="academic.t2.desc">خطتك الأكاديمية اليومية</p>
+              </li>
+              <li class="glass-tile rounded-3xl p-5" data-reveal style="--reveal-delay:160ms">
+                <span class="mb-3 grid h-11 w-11 place-items-center rounded-2xl bg-medical-500/15 text-medical-400 ring-1 ring-white/10"><svg class="h-5 w-5"><use href="#i-message"/></svg></span>
+                <h3 class="font-bold text-white" data-i18n="academic.t3.title">ملاحظات المشرف</h3>
+                <p class="mt-1 text-[13px] text-white/65" data-i18n="academic.t3.desc">طَوِّر. انمِ. تفوّق.</p>
+              </li>
+              <li class="glass-tile rounded-3xl p-5" data-reveal style="--reveal-delay:240ms">
+                <span class="mb-3 grid h-11 w-11 place-items-center rounded-2xl bg-medical-500/15 text-medical-400 ring-1 ring-white/10"><svg class="h-5 w-5"><use href="#i-book"/></svg></span>
+                <h3 class="font-bold text-white" data-i18n="academic.t4.title">مواد المقررات</h3>
+                <p class="mt-1 text-[13px] text-white/65" data-i18n="academic.t4.desc">المحاضرات والمصادر</p>
+              </li>
+              <li class="glass-tile rounded-3xl p-5 sm:col-span-2" data-reveal style="--reveal-delay:320ms">
+                <span class="mb-3 grid h-11 w-11 place-items-center rounded-2xl bg-medical-500/15 text-medical-400 ring-1 ring-white/10"><svg class="h-5 w-5"><use href="#i-chart"/></svg></span>
+                <h3 class="font-bold text-white" data-i18n="academic.t5.title">أداء الطلاب</h3>
+                <p class="mt-1 text-[13px] text-white/65" data-i18n="academic.t5.desc">تابع تقدّمك</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOR EXTERNAL CLINICS ===================== -->
+    <section id="clinics" class="scroll-mt-20 bg-white py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <!-- Image -->
+          <div class="relative" data-reveal>
+            <div class="absolute -bottom-5 -start-5 h-40 w-40 rounded-[28px] bg-medical-500/10" aria-hidden="true"></div>
+            <div class="img-frame relative h-[340px] overflow-hidden rounded-[28px] shadow-[0_30px_60px_-28px_rgba(11,37,69,.5)] sm:h-[420px] lg:h-[520px]">
+              <img data-img="clinic" data-i18n-alt="clinics.imageAlt"
+                   alt="عيادة أسنان حديثة ومضاءة بكرسي علاج"
+                   loading="lazy" class="h-full w-full object-cover object-center">
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div data-reveal style="--reveal-delay:120ms">
+            <p class="eyebrow" style="color:#1570CD" data-i18n="clinics.eyebrow">للعيادات الخارجية</p>
+            <h2 class="h-display mt-4 text-3xl font-extrabold text-navy-900 sm:text-4xl">
+              <span class="block" data-i18n="clinics.title1">رعاية عالية الجودة.</span>
+              <span class="block" data-i18n="clinics.title2">بإدارة فعّالة.</span>
+            </h2>
+            <p class="mt-5 text-[15px] leading-relaxed text-slate-600" data-i18n="clinics.desc">
+              نظّم عمليات عيادتك ومرضاك واحتفظ بكل شيء منظّمًا — من الحجز حتى المتابعة.
+            </p>
+
+            <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+              <li class="feature-row flex items-start gap-4 rounded-2xl border border-slate-200 bg-ice p-4">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#E7F2FF] text-medical-600"><svg class="h-5 w-5"><use href="#i-calendar"/></svg></span>
+                <div>
+                  <h3 class="text-[15px] font-bold text-navy-900" data-i18n="clinics.r1.title">حجز المواعيد</h3>
+                  <p class="mt-0.5 text-[13px] text-slate-500" data-i18n="clinics.r1.desc">توفّر لحظي</p>
+                </div>
+              </li>
+              <li class="feature-row flex items-start gap-4 rounded-2xl border border-slate-200 bg-ice p-4">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#E7F2FF] text-medical-600"><svg class="h-5 w-5"><use href="#i-file"/></svg></span>
+                <div>
+                  <h3 class="text-[15px] font-bold text-navy-900" data-i18n="clinics.r2.title">سجلات المرضى</h3>
+                  <p class="mt-0.5 text-[13px] text-slate-500" data-i18n="clinics.r2.desc">آمنة ومركّزة</p>
+                </div>
+              </li>
+              <li class="feature-row flex items-start gap-4 rounded-2xl border border-slate-200 bg-ice p-4">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#E7F2FF] text-medical-600"><svg class="h-5 w-5"><use href="#i-clipboard"/></svg></span>
+                <div>
+                  <h3 class="text-[15px] font-bold text-navy-900" data-i18n="clinics.r3.title">خطط العلاج</h3>
+                  <p class="mt-0.5 text-[13px] text-slate-500" data-i18n="clinics.r3.desc">رعاية مخصّصة</p>
+                </div>
+              </li>
+              <li class="feature-row flex items-start gap-4 rounded-2xl border border-slate-200 bg-ice p-4">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#E7F2FF] text-medical-600"><svg class="h-5 w-5"><use href="#i-bell"/></svg></span>
+                <div>
+                  <h3 class="text-[15px] font-bold text-navy-900" data-i18n="clinics.r4.title">المتابعة والتذكيرات</h3>
+                  <p class="mt-0.5 text-[13px] text-slate-500" data-i18n="clinics.r4.desc">نتائج أفضل</p>
+                </div>
+              </li>
+            </ul>
+
+            <a data-route="clinicCta" class="btn btn-dark arrow-slide mt-8">
+              <span data-i18n="clinics.cta">استكشف خدمات العيادات</span>
+              <svg class="arr h-4 w-4" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== AI SECTION ===================== -->
+    <section id="features" class="on-dark relative scroll-mt-20 overflow-hidden bg-navy-900 py-20 text-white lg:py-28">
+      <div class="grid-pattern absolute inset-0" aria-hidden="true"></div>
+      <div class="glow-blob -end-24 -top-32 h-96 w-96 bg-medical-500/25" aria-hidden="true"></div>
+      <div class="glow-blob -bottom-32 -start-24 h-80 w-80 bg-medical-400/15" aria-hidden="true"></div>
+
+      <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
+          <!-- Copy -->
+          <div class="lg:col-span-4" data-reveal>
+            <p class="eyebrow" data-i18n="ai.eyebrow">مدعوم بالابتكار</p>
+            <h2 class="h-display mt-4 text-3xl font-extrabold sm:text-4xl">
+              <span class="block" data-i18n="ai.title1">ذكاء اصطناعي يعمل</span>
+              <span class="block" data-i18n="ai.title2">من أجل ابتسامات أفضل.</span>
+            </h2>
+            <p class="mt-5 text-[15px] leading-relaxed text-white/70" data-i18n="ai.desc">
+              من التحليل المبدئي للأشعة إلى المحادثة الذكية، يساعدك ذكاء OraLink على اتخاذ قرارات أسرع وأدق والتركيز على ما يهم حقًا: الرعاية.
+            </p>
+            <a data-route="aiCta" class="btn btn-primary arrow-slide mt-8">
+              <span data-i18n="ai.cta">اكتشف ميزات الذكاء الاصطناعي</span>
+              <svg class="arr h-4 w-4" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+
+          <!-- Glowing tooth illustration (decorative) -->
+          <div class="flex justify-center lg:col-span-4" aria-hidden="true">
+            <div class="relative aspect-square w-56 sm:w-64 lg:w-72">
+              <div class="absolute inset-0 rounded-full bg-medical-500/20 blur-3xl"></div>
+              <div class="spin-slow absolute inset-2 rounded-full border border-dashed border-white/15"></div>
+              <div class="spin-slower absolute inset-9 rounded-full border border-medical-400/25"></div>
+              <svg class="tooth-glow absolute inset-0 m-auto h-1/2 w-1/2 text-[#E4F2FF]" viewBox="0 0 32 36">
+                <use href="#i-tooth"/>
+              </svg>
+              <span class="absolute left-1/2 top-1 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-[#8CCBFF] shadow-[0_0_16px_4px_rgba(59,160,255,.7)]"></span>
+              <span class="absolute bottom-6 start-2 h-1.5 w-1.5 rounded-full bg-medical-400/70"></span>
+              <span class="absolute right-4 top-16 h-1 w-1 rounded-full bg-white/60"></span>
+            </div>
+          </div>
+
+          <!-- Mock AI card (preliminary demo) -->
+          <div class="lg:col-span-4" data-reveal style="--reveal-delay:160ms">
+            <div class="glass-strong rounded-[28px] p-5 shadow-[0_30px_60px_-30px_rgba(46,144,250,.5)] sm:p-6">
+              <div class="flex items-center justify-between gap-3">
+                <span class="flex items-center gap-2.5">
+                  <span class="grid h-10 w-10 place-items-center rounded-xl bg-medical-500/15 text-medical-400 ring-1 ring-white/10"><svg class="h-5 w-5"><use href="#i-scan"/></svg></span>
+                  <span class="text-sm font-extrabold text-white" data-i18n="ai.cardTitle">تحليل الأشعة بالذكاء الاصطناعي</span>
+                </span>
+                <span class="shrink-0 rounded-full border border-medical-400/40 bg-medical-500/15 px-2.5 py-1 text-[10px] font-extrabold text-[#9FD1FF]" data-i18n="ai.demoBadge">عرض مبدئي توضيحي</span>
+              </div>
+
+              <div class="mt-4 grid grid-cols-2 gap-3">
+                <div class="img-frame h-24 overflow-hidden rounded-2xl ring-1 ring-white/10">
+                  <img data-img="xray1" data-i18n-alt="ai.xrayAlt1" alt="صورة أشعة بانورامية للأسنان" loading="lazy" class="h-full w-full object-cover opacity-90">
+                </div>
+                <div class="img-frame h-24 overflow-hidden rounded-2xl ring-1 ring-white/10">
+                  <img data-img="xray2" data-i18n-alt="ai.xrayAlt2" alt="صورة قريبة لأشعة الأسنان" loading="lazy" class="h-full w-full object-cover opacity-90">
+                </div>
+              </div>
+
+              <p class="mt-4 text-[13px] font-semibold text-white/70" data-i18n="ai.prelim">النتيجة المبدئية:</p>
+              <p class="mt-2 flex items-center gap-2.5 rounded-2xl border border-emerald-300/30 bg-emerald-400/10 px-3.5 py-3 text-[13px] font-bold text-emerald-200">
+                <svg class="h-5 w-5 shrink-0"><use href="#i-check-c"/></svg>
+                <span data-i18n="ai.status">لا توجد مشكلات واضحة</span>
+              </p>
+
+              <button type="button" id="reportBtn"
+                      class="mt-4 flex w-full items-center justify-between rounded-2xl bg-white/[0.07] px-4 py-3 text-[13px] font-bold text-white ring-1 ring-white/10 transition hover:bg-white/10"
+                      aria-expanded="false" aria-controls="reportPanel">
+                <span class="flex items-center gap-2.5">
+                  <svg class="h-5 w-5 text-medical-400"><use href="#i-file"/></svg>
+                  <span data-i18n="ai.viewReport">عرض التقرير</span>
+                </span>
+                <svg class="chevron-rot h-4 w-4 text-white/60" aria-hidden="true"><use href="#i-chevron"/></svg>
+              </button>
+
+              <div id="reportPanel" hidden class="mt-3 overflow-hidden rounded-2xl border border-white/10 bg-navy-800/60">
+                <ul class="divide-y divide-white/5">
+                  <li class="flex items-center justify-between px-4 py-2.5 text-[13px]"><span class="text-white/80" data-i18n="ai.f1.label">التسوس</span><span class="font-bold text-emerald-300" data-i18n="ai.f1.value">نظيف</span></li>
+                  <li class="flex items-center justify-between px-4 py-2.5 text-[13px]"><span class="text-white/80" data-i18n="ai.f2.label">العظم حول السني</span><span class="font-bold text-emerald-300" data-i18n="ai.f2.value">نظيف</span></li>
+                  <li class="flex items-center justify-between px-4 py-2.5 text-[13px]"><span class="text-white/80" data-i18n="ai.f3.label">الأسنان المنطمرة</span><span class="font-bold text-emerald-300" data-i18n="ai.f3.value">لا يوجد</span></li>
+                  <li class="flex items-center justify-between px-4 py-2.5 text-[13px]"><span class="text-white/80" data-i18n="ai.f4.label">ملاحظات أخرى</span><span class="font-bold text-emerald-300" data-i18n="ai.f4.value">لا يوجد</span></li>
+                </ul>
+              </div>
+
+              <p class="mt-3 text-[11.5px] leading-relaxed text-white/55" data-i18n="ai.disclaimer">
+                معاينة توضيحية بنتائج مبدئية — لا تُغني عن تشخيص الطبيب المختص.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== STATS + FINAL CTA ===================== -->
+    <section id="start" class="scroll-mt-20 border-t border-slate-200/80 bg-ice py-16 lg:py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+          <!-- Stats -->
+          <ul class="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 lg:col-span-7"
+              data-reveal aria-label="OraLink بالأرقام" data-i18n-aria="stats.listLabel">
+            <li class="flex flex-col items-start gap-3">
+              <span class="grid h-11 w-11 place-items-center rounded-xl bg-[#E7F2FF] text-medical-600"><svg class="h-5 w-5"><use href="#i-users"/></svg></span>
+              <div>
+                <p class="stat-value text-3xl font-extrabold text-navy-900 lg:text-4xl"><span data-count="10" data-suffix="K+">10K+</span></p>
+                <p class="mt-1 text-[13px] font-medium text-slate-500" data-i18n="stats.s1.label">مريض تمّت خدمتهم</p>
+              </div>
+            </li>
+            <li class="flex flex-col items-start gap-3">
+              <span class="grid h-11 w-11 place-items-center rounded-xl bg-[#E7F2FF] text-medical-600"><svg class="h-5 w-5"><use href="#i-cap"/></svg></span>
+              <div>
+                <p class="stat-value text-3xl font-extrabold text-navy-900 lg:text-4xl"><span data-count="500" data-suffix="+">500+</span></p>
+                <p class="mt-1 text-[13px] font-medium text-slate-500" data-i18n="stats.s2.label">طالب وأستاذ</p>
+              </div>
+            </li>
+            <li class="flex flex-col items-start gap-3">
+              <span class="grid h-11 w-11 place-items-center rounded-xl bg-[#E7F2FF] text-medical-600"><svg class="h-5 w-5"><use href="#i-building"/></svg></span>
+              <div>
+                <p class="stat-value text-3xl font-extrabold text-navy-900 lg:text-4xl"><span data-count="50" data-suffix="+">50+</span></p>
+                <p class="mt-1 text-[13px] font-medium text-slate-500" data-i18n="stats.s3.label">عيادة وقسم</p>
+              </div>
+            </li>
+            <li class="flex flex-col items-start gap-3">
+              <span class="grid h-11 w-11 place-items-center rounded-xl bg-[#E7F2FF] text-medical-600"><svg class="h-5 w-5"><use href="#i-bot"/></svg></span>
+              <div>
+                <p class="stat-value text-3xl font-extrabold text-navy-900 lg:text-4xl"><span data-count="24" data-suffix="/7">24/7</span></p>
+                <p class="mt-1 text-[13px] font-medium text-slate-500" data-i18n="stats.s4.label">مساعد ذكي</p>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Final CTA box -->
+          <div class="on-dark relative overflow-hidden rounded-[28px] bg-navy-900 p-7 text-white shadow-[0_30px_60px_-30px_rgba(11,37,69,.8)] sm:p-8 lg:col-span-5"
+               data-reveal style="--reveal-delay:150ms">
+            <div class="glow-blob -top-20 -end-12 h-56 w-56 bg-medical-500/25" aria-hidden="true"></div>
+            <div class="relative">
+              <h2 class="h-display text-2xl font-extrabold sm:text-[1.75rem]" data-i18n="cta.title">هل أنت مستعد للبدء؟</h2>
+              <p class="mt-3 text-sm leading-relaxed text-white/70" data-i18n="cta.desc">
+                انضم إلى OraLink اليوم واكتشف طريقة أذكى لإدارة رعاية الأسنان والتعليم والعيادات.
+              </p>
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a data-route="finalCtaA" class="btn btn-primary btn-sm arrow-slide">
+                  <span data-i18n="cta.btnA">الذهاب إلى البوابة الأكاديمية</span>
+                  <svg class="arr h-4 w-4" aria-hidden="true"><use href="#i-arrow"/></svg>
+                </a>
+                <a data-route="finalCtaB" class="btn btn-outline btn-sm arrow-slide">
+                  <span data-i18n="cta.btnB">الذهاب إلى بوابة العيادات</span>
+                  <svg class="arr h-4 w-4" aria-hidden="true"><use href="#i-arrow"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="contact" class="scroll-mt-20 border-t border-slate-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+        <!-- Logo + tagline -->
+        <div class="flex items-center gap-4">
+          <img src="images/logo.png" alt="OraLink" width="1558" height="282" class="h-8 w-auto" loading="lazy" />
+          <p class="text-[12.5px] text-slate-500" data-i18n="footer.tagline">رعاية أذكى · روابط أقوى</p>
+        </div>
+
+        <!-- Footer nav -->
+        <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold text-slate-600"
+             aria-label="روابط التذييل" data-i18n-aria="nav.footerNav">
+          <a href="#home" data-nav="home" class="transition hover:text-medical-600" data-i18n="nav.home">الرئيسية</a>
+          <a href="#about" data-nav="about" class="transition hover:text-medical-600" data-i18n="nav.about">عن المنصة</a>
+          <a href="#features" data-nav="features" class="transition hover:text-medical-600" data-i18n="nav.features">المزايا</a>
+          <a href="#for-you" data-nav="for-you" class="transition hover:text-medical-600" data-i18n="nav.forYou">لك</a>
+          <a href="#contact" data-nav="contact" class="transition hover:text-medical-600" data-i18n="nav.contact">تواصل معنا</a>
+        </nav>
+
+        <!-- Social (rendered from the SOCIAL config in js/config.js) -->
+        <ul id="socialList" class="flex items-center gap-3" aria-label="OraLink على وسائل التواصل" data-i18n-aria="footer.socialLabel"></ul>
+      </div>
+
+      <p class="mt-10 border-t border-slate-100 pt-6 text-center text-[12.5px] text-slate-500 md:text-start"
+         data-i18n="footer.rights">© 2025 OraLink. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <!-- Application engine -->
+  <script src="js/main.js"></script>
+</body>
+</html>

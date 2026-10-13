@@ -1,0 +1,467 @@
+/* =============================================================================
+   OraLink Landing — STYLES
+   Tailwind (CDN) handles utilities; this file holds the design system:
+   fonts, buttons, glass surfaces, motion, RTL adjustments, accessibility.
+   ========================================================================== */
+
+:root {
+  --navy-900: #0b2545;
+  --navy-800: #0e2c50;
+  --navy-700: #13315c;
+  --medical-500: #2e90fa;
+  --medical-400: #3ba0ff;
+  --medical-600: #1570cd;
+  --ice: #f5f9ff;
+}
+
+/* ---------- Base ---------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: #fff;
+  color: #0b2545;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Arabic font + no letter-spacing (Latin tracking breaks Arabic ligatures) */
+html[lang="ar"] body {
+  font-family: "Cairo", "Inter", system-ui, sans-serif;
+}
+html[lang="ar"] .eyebrow,
+html[lang="ar"] .h-display,
+html[lang="ar"] .stat-value {
+  letter-spacing: normal;
+}
+
+/* Display headings */
+.h-display {
+  letter-spacing: -0.022em;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--medical-400);
+}
+.eyebrow::before {
+  content: "";
+  width: 1.6rem;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.85;
+}
+
+/* Skip link */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  inset-inline-start: 1rem;
+  z-index: 100;
+  padding: 0.7rem 1.2rem;
+  border-radius: 0.75rem;
+  background: var(--medical-500);
+  color: var(--navy-900);
+  font-weight: 700;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ---------- Accessibility ------------------------------------------------- */
+:focus-visible {
+  outline: 3px solid var(--medical-600);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+.on-dark :focus-visible,
+#siteHeader :focus-visible {
+  outline-color: var(--medical-400);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Buttons ------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1;
+  padding: 0.95rem 1.6rem;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease,
+    border-color 0.25s ease, color 0.25s ease;
+}
+.btn:active {
+  transform: translateY(0) scale(0.985);
+}
+
+/* Light-blue primary (navy text → AA contrast on #2E90FA/#3BA0FF) */
+.btn-primary {
+  background: linear-gradient(135deg, var(--medical-400), var(--medical-500));
+  color: var(--navy-900);
+  box-shadow: 0 12px 30px -12px rgba(46, 144, 250, 0.75);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 42px -14px rgba(46, 144, 250, 0.9);
+}
+
+/* Solid navy (for light sections) */
+.btn-dark {
+  background: var(--navy-900);
+  color: #fff;
+  box-shadow: 0 14px 30px -16px rgba(11, 37, 69, 0.7);
+}
+.btn-dark:hover {
+  background: var(--navy-700);
+  transform: translateY(-2px);
+}
+
+/* Outline on dark sections */
+.btn-outline {
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Small button variant */
+.btn-sm {
+  padding: 0.7rem 1.25rem;
+  font-size: 0.85rem;
+}
+
+/* Circle arrow button (cards) */
+.arrow-circle {
+  display: grid;
+  place-items: center;
+  height: 2.6rem;
+  width: 2.6rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--medical-400), var(--medical-500));
+  color: var(--navy-900);
+  box-shadow: 0 10px 22px -10px rgba(46, 144, 250, 0.9);
+}
+
+/* ---------- Glass surfaces ------------------------------------------------ */
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.glass-strong {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.glass-tile {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.glass-tile:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(46, 144, 250, 0.5);
+  box-shadow: 0 18px 40px -20px rgba(46, 144, 250, 0.55);
+}
+
+/* ---------- Navbar -------------------------------------------------------- */
+#siteHeader {
+  transition: background-color 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  border-bottom: 1px solid transparent;
+}
+#siteHeader.is-scrolled,
+#siteHeader.is-open {
+  background: rgba(11, 37, 69, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 34px -18px rgba(2, 10, 24, 0.9);
+}
+#siteHeader.at-top {
+  background: linear-gradient(to bottom, rgba(6, 20, 40, 0.55), rgba(6, 20, 40, 0));
+}
+
+.nav-link {
+  position: relative;
+  padding: 0.5rem 0.85rem;
+  border-radius: 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.72);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+.nav-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0.85rem;
+  bottom: 0.15rem;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--medical-400);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+.nav-link.is-active {
+  color: #fff;
+}
+.nav-link.is-active::after {
+  transform: scaleX(1);
+}
+.nav-drop::after {
+  display: none;
+}
+.nav-drop.is-active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* "For You" dropdown panel */
+#forYouMenu {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+#forYouMenu.is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.lang-btn {
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.7);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.lang-btn:hover {
+  color: #fff;
+}
+.lang-btn.is-active {
+  background: linear-gradient(135deg, var(--medical-400), var(--medical-500));
+  color: var(--navy-900);
+}
+
+.mobile-link {
+  display: block;
+  border-radius: 0.75rem;
+  padding: 0.8rem 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+.mobile-link:hover,
+.mobile-link.is-active {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+/* ---------- Hero ---------------------------------------------------------- */
+.hero-img-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 55% at 78% 20%, rgba(46, 144, 250, 0.22), transparent 70%),
+    linear-gradient(to top, rgba(11, 37, 69, 0.96) 6%, rgba(11, 37, 69, 0.72) 45%, rgba(6, 20, 40, 0.78) 100%);
+}
+
+/* ---------- Cards (choose your path) -------------------------------------- */
+.path-card {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+.path-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 34px 60px -28px rgba(11, 37, 69, 0.65);
+}
+.path-card img {
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.path-card:hover img {
+  transform: scale(1.09);
+}
+.path-card.is-soon {
+  cursor: default;
+}
+
+/* ---------- Feature rows (clinics) ---------------------------------------- */
+.feature-row {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.feature-row:hover {
+  border-color: rgba(46, 144, 250, 0.55);
+  box-shadow: 0 16px 34px -22px rgba(11, 37, 69, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ---------- Icons --------------------------------------------------------- */
+.icon-badge-dark {
+  display: grid;
+  place-items: center;
+  border-radius: 0.9rem;
+  background: rgba(46, 144, 250, 0.14);
+  color: var(--medical-400);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.icon-badge-light {
+  display: grid;
+  place-items: center;
+  border-radius: 0.9rem;
+  background: #e7f2ff;
+  color: var(--medical-600);
+}
+
+/* Arrow slide + RTL flip (arrows must point forward in both directions) */
+.arr {
+  transition: transform 0.3s ease;
+}
+.arrow-slide:hover .arr {
+  transform: translateX(0.3rem);
+}
+[dir="rtl"] .arr {
+  transform: scaleX(-1);
+}
+[dir="rtl"] .arrow-slide:hover .arr {
+  transform: translateX(-0.3rem) scaleX(-1);
+}
+
+/* ---------- Glows & decorative motion ------------------------------------- */
+.glow-blob {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(90px);
+  pointer-events: none;
+}
+.tooth-glow {
+  filter: drop-shadow(0 0 18px rgba(59, 160, 255, 0.85)) drop-shadow(0 0 55px rgba(46, 144, 250, 0.5));
+  animation: tooth-float 6s ease-in-out infinite;
+}
+@keyframes tooth-float {
+  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+  50% { transform: translateY(-14px) rotate(1.5deg); }
+}
+.spin-slow {
+  animation: spin 26s linear infinite;
+}
+.spin-slower {
+  animation: spin 44s linear infinite reverse;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 52px 52px;
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 45%, #000 30%, transparent 78%);
+  mask-image: radial-gradient(70% 60% at 50% 45%, #000 30%, transparent 78%);
+}
+
+/* Fade an absolutely positioned image toward the text side */
+.fade-image {
+  background-image: linear-gradient(to right, var(--navy-900) 6%, rgba(11, 37, 69, 0.25) 62%, rgba(11, 37, 69, 0.05));
+}
+[dir="rtl"] .fade-image {
+  background-image: linear-gradient(to left, var(--navy-900) 6%, rgba(11, 37, 69, 0.25) 62%, rgba(11, 37, 69, 0.05));
+}
+
+/* Image frames keep a branded gradient if a photo fails to load */
+.img-frame {
+  background: linear-gradient(140deg, var(--navy-700), var(--navy-900));
+}
+.img-failed {
+  visibility: hidden;
+}
+
+/* ---------- Stats --------------------------------------------------------- */
+.stat-value {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Reveal-on-scroll (only hides content when JS is running) ------ */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Reduced motion: kill all non-essential animation -------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- Small helpers ------------------------------------------------- */
+body.no-scroll {
+  overflow: hidden;
+}
+.chevron-rot {
+  transition: transform 0.25s ease;
+}
+[aria-expanded="true"] .chevron-rot {
+  transform: rotate(180deg);
+}
