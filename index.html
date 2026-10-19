@@ -45,7 +45,9 @@
   <script>document.documentElement.classList.add("js");</script>
 
   <!-- Application config + engine -->
-  <script src="js/config.js"></script>
+  <!-- Cache-busted on purpose: the keep-alive service rewrites tunnel URLs in
+       config.js, and every visit must fetch the fresh copy within seconds. -->
+  <script>document.write('<script src="js/config.js?t=' + Date.now() + '"><\/script>');</script>
   <script src="js/i18n.js"></script>
 </head>
 
