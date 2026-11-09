@@ -12,12 +12,11 @@
    ========================================================================== */
 
 /* --- 1) The two existing websites (change a URL here after deployment) -----
-   PUBLIC links:
-     • Academic → https://avon-notify-suspension-marshall.trycloudflare.com (Cloudflare quick tunnel → localhost:3000)
-                   [the keep-alive service rewrites this URL automatically whenever the tunnel restarts]
-     • Clinics  → https://m7hamedx.github.io/oralink-clinics/ (PERMANENT — GitHub Pages, always online)
-   NOTE: quick-tunnel URLs change whenever the tunnels restart — if the buttons
-   stop working, restart the tunnels and paste the new URLs here.
+   PUBLIC links — BOTH PERMANENT (no PC required, URLs never change):
+     • Academic → https://oralink-academic.vercel.app           (Vercel)
+     • Clinics  → https://m7hamedx.github.io/oralink-clinics/   (GitHub Pages)
+   Local dev (unchanged): academic → localhost:3000, clinics → localhost:3001 —
+   the keep-alive service manages those but NEVER touches this file anymore.
    Local dev setup (run each project in its own terminal):
      • Academic → folder: "oralink-master (2)/oralink-master"  → npm run dev     → http://localhost:3000
      • Clinics  → folder: "omniroute/denta-care"               → npm run dev -- -p 3001 → http://localhost:3001
@@ -26,7 +25,7 @@
 const SITES = {
   academic: {
     name: "OraLink Academic",
-    url: "https://avon-notify-suspension-marshall.trycloudflare.com", // local: http://localhost:3000
+    url: "https://oralink-academic.vercel.app", // permanent — Vercel (local dev: http://localhost:3000)
     audience: "Students, Doctors, HODs, Supervisors, Admins"
   },
   clinics: {
