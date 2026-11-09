@@ -13,8 +13,8 @@
 
 /* --- 1) The two existing websites (change a URL here after deployment) -----
    PUBLIC links (Cloudflare quick tunnels → the dev servers on this PC):
-     • Academic → https://clothing-aud-stopped-teach.trycloudflare.com (→ localhost:3000)
-     • Clinics  → https://please-juvenile-emails-robertson.trycloudflare.com (→ localhost:3001)
+     • Academic → https://flyer-hybrid-beats-inspiration.trycloudflare.com (→ localhost:3000)
+     • Clinics  → https://appreciation-suggests-ensures-morris.trycloudflare.com (→ localhost:3001)
    NOTE: quick-tunnel URLs change whenever the tunnels restart — if the buttons
    stop working, restart the tunnels and paste the new URLs here.
    Local dev setup (run each project in its own terminal):
@@ -25,12 +25,12 @@
 const SITES = {
   academic: {
     name: "OraLink Academic",
-    url: "https://clothing-aud-stopped-teach.trycloudflare.com", // local: http://localhost:3000
+    url: "https://flyer-hybrid-beats-inspiration.trycloudflare.com", // local: http://localhost:3000
     audience: "Students, Doctors, HODs, Supervisors, Admins"
   },
   clinics: {
     name: "OraLink Clinics",
-    url: "https://please-juvenile-emails-robertson.trycloudflare.com", // local: http://localhost:3001
+    url: "https://appreciation-suggests-ensures-morris.trycloudflare.com", // local: http://localhost:3001
     audience: "External clinic doctors"
   }
 };
