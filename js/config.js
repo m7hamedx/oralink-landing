@@ -12,9 +12,10 @@
    ========================================================================== */
 
 /* --- 1) The two existing websites (change a URL here after deployment) -----
-   PUBLIC links (Cloudflare quick tunnels → the dev servers on this PC):
-     • Academic → https://avon-notify-suspension-marshall.trycloudflare.com (→ localhost:3000)
-     • Clinics  → https://nature-satisfactory-sink-assumption.trycloudflare.com (→ localhost:3001)
+   PUBLIC links:
+     • Academic → https://avon-notify-suspension-marshall.trycloudflare.com (Cloudflare quick tunnel → localhost:3000)
+                   [the keep-alive service rewrites this URL automatically whenever the tunnel restarts]
+     • Clinics  → https://m7hamedx.github.io/oralink-clinics/ (PERMANENT — GitHub Pages, always online)
    NOTE: quick-tunnel URLs change whenever the tunnels restart — if the buttons
    stop working, restart the tunnels and paste the new URLs here.
    Local dev setup (run each project in its own terminal):
@@ -30,7 +31,7 @@ const SITES = {
   },
   clinics: {
     name: "OraLink Clinics",
-    url: "https://nature-satisfactory-sink-assumption.trycloudflare.com", // local: http://localhost:3001
+    url: "https://m7hamedx.github.io/oralink-clinics/", // permanent — GitHub Pages (local dev: http://localhost:3001)
     audience: "External clinic doctors"
   }
 };
